@@ -12,3 +12,6 @@ My attempt at solving Advent Of Code 2019, below are the status of every day:
 + Day 7: Solved part one only
 + Day 8: Solved both parts
 + Day 9: Not solved
+
+
+Fuck Intcode
