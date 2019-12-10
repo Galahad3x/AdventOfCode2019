@@ -1,7 +1,8 @@
 # AdventOfCode2019
 My attempt at solving Advent Of Code 2019, below are the status of every day:
 
-## Total stars: 14*
+## Total stars: 15*
+### Objective: 25*
 
 + Day 1: Solved both parts
 + Day 2: Solved both parts
@@ -12,6 +13,7 @@ My attempt at solving Advent Of Code 2019, below are the status of every day:
 + Day 7: Solved part one only
 + Day 8: Solved both parts
 + Day 9: Not solved
++ Day 10: Solved part one only 
 
 
 Fuck Intcode
