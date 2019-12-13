@@ -7,7 +7,7 @@ My attempt at solving Advent Of Code 2019, below are the status of every day:
 + Day 1: Solved both parts [Python][Haskell]
 + Day 2: Solved both parts [Python]
 + Day 3: Solved part one only [Haskell]
-+ Day 4: Solved both parts [Python]
++ Day 4: Solved both parts [Python][Haskell]
 + Day 5: Solved both parts [Python]
 + Day 6: Solved both parts [Python]
 + Day 7: Solved part one only [Python]
@@ -16,5 +16,6 @@ My attempt at solving Advent Of Code 2019, below are the status of every day:
 + Day 10: Solved part one only [Java]
 + Day 11: Not solved [Python] 
 + Day 12: Solved part one only [Python]
++ Day 13: Not solved [Python]
 
 Fuck Intcode
