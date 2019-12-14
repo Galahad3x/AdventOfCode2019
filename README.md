@@ -17,5 +17,6 @@ My attempt at solving Advent Of Code 2019, below are the status of every day:
 + Day 11: Not solved [Python] 
 + Day 12: Solved part one only [Python]
 + Day 13: Not solved [Python]
++ Day 14: Not solved yet [Python]
 
 Fuck Intcode
