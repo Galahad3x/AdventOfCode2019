@@ -1,3 +1,5 @@
+import math
+
 f = open("input.txt", "r")
 
 ingredients = {}
@@ -19,7 +21,7 @@ def get_ore(objective):
     global inventory
     objective_mineral = objective.split(" ")[1]
     objective_quantity = int(objective.split(" ")[0])
-    if objective_quantity > inventory[objective_mineral]:
+    if objective_quantity >= inventory[objective_mineral]:
         needed = objective_quantity - inventory[objective_mineral]
     else:
         return 0
@@ -28,23 +30,21 @@ def get_ore(objective):
             real_key = key
             quantity_in_key = int(key.split(" ")[0])
             break
-    n_of_reactions = needed // quantity_in_key
+    n_of_reactions = math.ceil(needed / quantity_in_key)
     if n_of_reactions == 0:
         n_of_reactions = 1
     real_quantity = int(quantity_in_key * n_of_reactions)
     ing_needed = ingredients[real_key][:]
+    print("Type: " + str(ing_needed))
+    ingredients_needed = []
     for ingredient in ing_needed:
-        i = 0
-        while True:
-            if str(i) in ingredient:
-                ingredient.replace(str(i), str(i * n_of_reactions))
-                break
-            i += 1
-    # ing_needed: Llista d'ingredients que necessito
+        quantity_in_recipe = int(ingredient.split(" ")[0])
+        ingredients_needed.append(ingredient.replace(str(quantity_in_recipe), str(quantity_in_recipe * n_of_reactions)))
     if n_of_reactions == 0:
         raise Exception("Something went wrong")
+    print("Type: " + str(ingredients_needed))
     ore = 0
-    for ingredient in ing_needed:
+    for ingredient in ingredients_needed:
         reactive_mineral = ingredient.split(" ")[1]
         reactive_quantity = int(ingredient.split(" ")[0])
         inventory[objective_mineral] += (real_quantity - objective_quantity)
