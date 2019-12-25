@@ -1,7 +1,7 @@
 # AdventOfCode2019
 My attempt at solving Advent Of Code 2019, below are the status of every day:
 
-## Total stars: 17*
+## Total stars: 18*
 
 + Day 1: Solved both parts [Python][Haskell]
 + Day 2: Solved both parts [Python]
