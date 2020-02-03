@@ -11,7 +11,7 @@ dealWithIncrement EmptyStack _ = EmptyStack
 dealWithIncrement stack inc = dealWith (stackPile stack) inc
 
 dealWith :: [a] -> Int -> Stack a
-dealWith listS inc =    
+dealWith listS inc = dwith listS inc
 
 listWithPositions :: Int -> Int -> [Int]
 listWithPositions size inc = map (calculatePos size inc) longList
