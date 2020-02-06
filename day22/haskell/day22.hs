@@ -1,24 +1,63 @@
 import Stack
 
 main = do
-    putStrLn "Helou gais"
-    let x = Stack { stackPile = [0..9] }
-        y = dealWithIncrement x 3
-    putStrLn $ (show x) ++ "\n" ++ (show y)
+    let deck = Stack { stackPile = [0,1..10006] }
+    cardloop deck
+
+cardloop :: Stack Int -> IO ()
+cardloop deck = do
+    line <- getLine
+    if null line  
+        then do
+            print (searchPosOfCard (stackPile deck) 2019)
+            return ()
+        else do
+            if "deal" == (words line)!!0
+                then if "into" == (words line)!!1
+                         then do
+                             putStrLn line
+                             let deck2 = dealIntoNewStack deck
+                             print (deck2 :: Stack Int)
+                             cardloop deck2
+                         else do
+                             putStrLn line
+                             let deck2 = dealWithIncrement deck (read ((words line)!!3))
+                             print (deck2 :: Stack Int)
+                             cardloop deck2
+                else do
+                    putStrLn line
+                    let deck2 = cutNcards deck (read ((words line)!!1))
+                    print (deck2 :: Stack Int)
+                    cardloop deck2
+
+searchPosOfCard :: (Eq a) => [a] -> a -> Maybe Int
+searchPosOfCard [] _ = Nothing
+searchPosOfCard xs elemn = if elemn `elem` xs then Just (posOfCard xs elemn 0) else Nothing
+
+posOfCard :: (Eq a) => [a] -> a -> Int -> Int
+posOfCard (x:xs) elm pos = if x == elm then pos else posOfCard xs elm pos+1 
 
 dealWithIncrement :: Stack a -> Int -> Stack a
 dealWithIncrement EmptyStack _ = EmptyStack
 dealWithIncrement stack inc = dealWith (stackPile stack) inc
 
 dealWith :: [a] -> Int -> Stack a
-dealWith listS inc = dwith listS inc
+dealWith listS inc = Stack { stackPile = dwith listS resList inc 0 }
+    where resList = replicate (length listS) listS!!0
+
+type Counter = Int
+
+dwith :: [a] -> [a] -> Int -> Counter -> [a]
+dwith [] _ _ _ = []
+dwith listS resList inc counter = if counter == length resList then resList else dwith listS (set (listWithPos!!counter) (listS!!counter) resList) inc (counter+1)
+   where listWithPos = listWithPositions (length listS) inc
 
 listWithPositions :: Int -> Int -> [Int]
 listWithPositions size inc = map (calculatePos size inc) longList
     where longList = take size [0,1..]
 
 calculatePos :: Int -> Int -> Int-> Int
-calculatePos size inc pos = ((pos+1)*inc) `mod` size
+calculatePos size inc pos = (pos*inc) `mod` size
 
 cutNcards :: Stack a -> Int -> Stack a
 cutNcards EmptyStack _ = EmptyStack
