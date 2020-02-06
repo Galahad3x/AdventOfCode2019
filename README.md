@@ -24,7 +24,7 @@ My attempt at solving Advent Of Code 2019, below are the status of every day:
 + Day 19: Not solved
 + Day 20: Solved only part one [Python]
 + Day 21: Not solved
-+ Day 22: Solved only part one [Java]
++ Day 22: Solved only part one [Java][Haskell]
 + Day 23: Not solved
 + Day 24: Solved only part one [Python]
 + Day 25: Not solved
