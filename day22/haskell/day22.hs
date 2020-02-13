@@ -50,7 +50,7 @@ type Counter = Int
 dwith :: [a] -> [a] -> Int -> Counter -> [a]
 dwith [] _ _ _ = []
 dwith listS resList inc counter = if counter == length resList then resList else dwith listS (set (listWithPos!!counter) (listS!!counter) resList) inc (counter+1)
-   where listWithPos = listWithPositions (length listS) inc
+    where listWithPos = listWithPositions (length listS) inc
 
 listWithPositions :: Int -> Int -> [Int]
 listWithPositions size inc = map (calculatePos size inc) longList
