@@ -2,12 +2,12 @@ import Stack
 
 main = do
     let deck = Stack { stackPile = [0,1..10006] }
-    cardloop deck
+    cardloop deck 0 
 
-cardloop :: Stack Int -> IO ()
-cardloop deck = do
+cardloop :: Stack Int -> Int -> IO ()
+cardloop deck cont = do
     line <- getLine
-    if null line  
+    if null line
         then do
             print (searchPosOfCard (stackPile deck) 2019)
             return ()
@@ -16,19 +16,22 @@ cardloop deck = do
                 then if "into" == (words line)!!1
                          then do
                              putStrLn line
+                             putStrLn $ show cont
                              let deck2 = dealIntoNewStack deck
                              print (deck2 :: Stack Int)
-                             cardloop deck2
+                             cardloop deck2 (cont+1)
                          else do
                              putStrLn line
+                             putStrLn $ show cont
                              let deck2 = dealWithIncrement deck (read ((words line)!!3))
                              print (deck2 :: Stack Int)
-                             cardloop deck2
+                             cardloop deck2 (cont+1)
                 else do
                     putStrLn line
+                    putStrLn $ show cont
                     let deck2 = cutNcards deck (read ((words line)!!1))
                     print (deck2 :: Stack Int)
-                    cardloop deck2
+                    cardloop deck2 (cont+1)
 
 searchPosOfCard :: (Eq a) => [a] -> a -> Maybe Int
 searchPosOfCard [] _ = Nothing
